@@ -8,5 +8,22 @@ module.exports = {
   output: {
     filename: '[name].js',
     path: path.resolve('./dist'),
+  },
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
+      },
+      {
+        test: /\.(jpg|png)$/,
+        loader: 'url-loader',
+        options: {
+          publicPath: './dist',
+          name: '[name].[ext]?[hash]',
+          limit: 10000
+        }
+      }
+    ]
   }
 }
